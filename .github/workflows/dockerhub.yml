@@ -28,10 +28,9 @@ jobs:
           echo "sha=$SHA" >> $GITHUB_OUTPUT
 
       - name: Build and push the image to DockerHub
-        id: build-push-image
-        env:
-          DOCKERHUB_REPOSITORY: ${{ vars.DOCKERHUB_REPOSITORY }}
-          IMAGE_TAG: ${{ steps.generate-tag.outputs.sha }}
-        run: |
-          docker build -t $DOCKERHUB_REPOSITORY:$IMAGE_TAG .
-          docker push $DOCKERHUB_REPOSITORY:$IMAGE_TAG
+        uses: docker/build-push-action@v5
+        with:
+          # Garanta que o username seja o mesmo usado no Login
+          push: true
+          tags: |
+            ${{ vars.DOCKERHUB_USERNAME }}/${{ vars.DOCKERHUB_REPOSITORY }}:${{ steps.generate-tag.outputs.sha }}           
