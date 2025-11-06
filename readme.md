@@ -14,4 +14,4 @@
             Quando a instalação for bem-sucedida, selecione Fechar para completar o processo de instalação.
             Deve aparecer a solicitação para Aceitar os Termos para continuar. O Docker Desktop iniciará após você aceitar os termos.
             Observe que o Docker Desktop não será executado se você não concordar com os termos.
-
+    docker
